@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -11,18 +12,20 @@ public class App implements ActionListener {
     private JFrame frame;
     private JButton button;
     private JPanel panel;
+    private JLabel label;
+    int count;
 
     public App() {
 
         frame = new JFrame();
-        //frame.setBackground(Color.white);
+        // frame.setBackground(Color.white);
         frame.setSize(420, 420);
         frame.setTitle("COASTER GAME");
         frame.setVisible(true);
         // frame.setIconImage(image.getImage());
         // frame.setIconImage(image.getImage());
         button = new JButton("Button");
-        
+        button.addActionListener(this);
 
         panel = new JPanel();
 
@@ -30,6 +33,9 @@ public class App implements ActionListener {
 
         panel.add(button);
         frame.add(panel);
+        label = new JLabel("NUMBER OF CLICKS: 0");
+        panel.add(label);
+
     }
 
     public static void main(String[] args) {
@@ -38,7 +44,7 @@ public class App implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-
+        count++;
+        label.setText("NUMBER OF CLICKS:" + count);
     }
 }
