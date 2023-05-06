@@ -34,7 +34,9 @@ public class App implements ActionListener {
         panel.setLayout(null);
 
         panel.add(button);
-        button.setSize(200, 100);
+       Button target = new Button(200, 100);
+       
+        button.setSize(target.getHeight(), target.getWidth());
         button.setLocation(30, 30);
 
         frame.add(panel);
@@ -53,17 +55,7 @@ public class App implements ActionListener {
     }
 
     public void ballon() {
-        int min = 0;
-        int max = 600;
 
-        double x = min + Math.random() * (max - min); // getting random x-axis and y-axis vaules
-        double y = min + Math.random() * (max - min);
-        int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
-        int yValue = (int) y;
-        panel.remove(button);
-        this.frame.repaint();
-        panel.add(button);
-        panel.setLocation(xValue, yValue);
     }
 
     @Override
