@@ -19,7 +19,8 @@ public class App implements ActionListener {
 
         frame = new JFrame();
         // frame.setBackground(Color.white);
-        frame.setSize(420, 420);
+        frame.setSize(600, 600);
+        // frame.setResizable(false);
         frame.setTitle("COASTER GAME");
         frame.setVisible(true);
         // frame.setIconImage(image.getImage());
@@ -28,7 +29,7 @@ public class App implements ActionListener {
         button.addActionListener(this);
 
         panel = new JPanel();
-
+        panel.setSize(600, 600);
         panel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 100));
         panel.setLayout(null);
 
@@ -51,17 +52,37 @@ public class App implements ActionListener {
 
     }
 
-    public void button() {
+    public void ballon() {
+        int min = 0;
+        int max = 600;
 
+        double x = min + Math.random() * (max - min); // getting random x-axis and y-axis vaules
+        double y = min + Math.random() * (max - min);
+        int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
+        int yValue = (int) y;
+        panel.remove(button);
+        this.frame.repaint();
+        panel.add(button);
+        panel.setLocation(xValue, yValue);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         count++;
         label.setText("NUMBER OF CLICKS:" + count);
+
+        int min = 0;
+        int max = 600;
+
+        double x = min + Math.random() * (max - min); // getting random x-axis and y-axis vaules
+        double y = min + Math.random() * (max - min);
+        int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
+        int yValue = (int) y;
+
         panel.remove(button);
         this.frame.repaint();
         panel.add(button);
+        button.setLocation(xValue, yValue);
 
     }
 }
