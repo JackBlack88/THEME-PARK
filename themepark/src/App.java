@@ -2,11 +2,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.annotation.Target;
 
 public class App implements ActionListener {
     private JFrame frame;
@@ -33,12 +35,16 @@ public class App implements ActionListener {
         panel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 100));
         panel.setLayout(null);
 
+        ImageIcon ballon = new ImageIcon("ballon.png");
+        button.setIcon(ballon);
         panel.add(button);
-       Button target = new Button(200, 100);
-       
-        button.setSize(target.getHeight(), target.getWidth());
-        button.setLocation(30, 30);
+        //Button target = new Button(200, 100, 0, 600);
+        // JButton button = new JButton(new
+        // ImageIcon(getClass().getClassLoader().getResource("ballon.gif")));
 
+
+        //button.setSize(target.getHeight(), target.getWidth());
+        button.setLocation(30, 30);
         frame.add(panel);
 
         label = new JLabel("NUMBER OF CLICKS: 0");
@@ -62,15 +68,12 @@ public class App implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         count++;
         label.setText("NUMBER OF CLICKS:" + count);
-
         int min = 0;
-        int max = 600;
-
+        int max = 500;
         double x = min + Math.random() * (max - min); // getting random x-axis and y-axis vaules
         double y = min + Math.random() * (max - min);
         int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
         int yValue = (int) y;
-
         panel.remove(button);
         this.frame.repaint();
         panel.add(button);
