@@ -4,8 +4,6 @@ import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.GridLayout;
 import java.awt.Transparency;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +14,9 @@ public class App implements ActionListener {
     private JButton button;
     private JPanel panel;
     private JLabel label;
+    private JButton start;
+    private JPanel first;
+    private JFrame main;
     int count;
     int min = 0;
     int max = 500;
@@ -25,16 +26,21 @@ public class App implements ActionListener {
     int yValue = (int) y;
 
     public App() {
-
+        main = new JFrame();
+        first = new JPanel();
+        start = new JButton("PRESS TO START");
+        main.add(first);
+        first.add(button);
+        start
+        ////////////////////////////////////////////////////////////////////////
         frame = new JFrame();
         Frame f = new Frame(1000, 1000);
         frame.setSize(f.getWidth(), f.getHeight());
         // frame.setResizable(false);
-        frame.setTitle("COASTER GAME");
+        frame.setTitle("BALLON POPPING");
         frame.setVisible(true);
-        ImageIcon ballon = new ImageIcon("ballon5.gif");
-        //button.setIcon(ballon);
-        button = new JButton(ballon);
+        ImageIcon ballon = new ImageIcon("ballon.gif");
+        button = new JButton(ballon);// Makes a new button and makes the button into the "ballon" gif
 
         button.addActionListener(this);
         button.setOpaque(false);
@@ -48,8 +54,6 @@ public class App implements ActionListener {
 
         panel.add(button);
         Button target = new Button(189, 100, 0, 600);
-        // JButton button = new JButton(new
-        // ImageIcon(getClass().getClassLoader().getResource("ballon.gif")));
 
         button.setSize(target.getWidth(), target.getHeight());
         button.setLocation(30, 30);
