@@ -4,13 +4,17 @@ import java.awt.event.*;
 public class App implements ActionListener {
     private JFrame mainFrame;
     private JFrame gameFrame;
+    private JFrame endFrame;
     private JButton button;
     private JButton startButton;
     private JPanel panel;
     private JPanel startPanel;
     private JLabel scoreLabel;
     private JLabel label;
+    private JLabel time;
     private int count;
+    private Timer timer;
+    private int timeLeft = 60;
     private Frame f = new Frame(1000, 1000);
     private Button target = new Button(189, 100, 0, 600);
     private ImageIcon balloonIcon = new ImageIcon("balloon.gif");
@@ -77,9 +81,33 @@ public class App implements ActionListener {
             panel.setLayout(null);
             panel.add(button);
             panel.add(scoreLabel);
-
+            panel.add(time);
+            time.setLocation(500, 21);
             gameFrame.add(panel);
             mainFrame.dispose();
+
+            timer = new Timer(1000, new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // TODO Auto-generated method stub
+                    timeLeft--;
+                    if (timeLeft == 0) {
+                        gameFrame.dispose();
+
+                        endFrame = new JFrame();
+                        endFrame.setSize(f.getWidth(), f.getHeight());
+                        endFrame.setVisible(true);
+                        endFrame.add(scoreLabel);
+                        scoreLabel.setText("YOUR FINAL SCORE IS: " + count);
+
+                    } else {
+                        time.setText("TIME LEFT: " + timeLeft);
+                    }
+                }
+
+            });
+            timer.start();
         }
     }
 }
