@@ -32,16 +32,14 @@ public class App implements ActionListener {
         // frame.setResizable(false);
         frame.setTitle("COASTER GAME");
         frame.setVisible(true);
+        ImageIcon ballon = new ImageIcon("ballon5.gif");
+        //button.setIcon(ballon);
+        button = new JButton(ballon);
 
-
-        button = new JButton();
-
-        ImageIcon ballon = new ImageIcon("ballon.png");
-        button.setIcon(ballon);
         button.addActionListener(this);
         button.setOpaque(false);
         button.setBorderPainted(false);
-        //button.setContentAreaFilled(false);
+        button.setContentAreaFilled(false);
 
         panel = new JPanel();
         panel.setSize(600, 600);
@@ -49,7 +47,7 @@ public class App implements ActionListener {
         panel.setLayout(null);
 
         panel.add(button);
-        Button target = new Button(133, 100, 0, 600);
+        Button target = new Button(189, 100, 0, 600);
         // JButton button = new JButton(new
         // ImageIcon(getClass().getClassLoader().getResource("ballon.gif")));
 
@@ -84,7 +82,6 @@ public class App implements ActionListener {
         int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
         int yValue = (int) y;
         button.setLocation(xValue, yValue);
-        //button.move(xValue, yValue);
 
     }
 }
