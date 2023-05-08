@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Transparency;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.annotation.Target;
@@ -16,34 +17,43 @@ public class App implements ActionListener {
     private JPanel panel;
     private JLabel label;
     int count;
+    int min = 0;
+    int max = 500;
+    double x = min + Math.random() * (max - min); // getting random x-axis and y-axis vaules
+    double y = min + Math.random() * (max - min);
+    int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
+    int yValue = (int) y;
 
     public App() {
 
         frame = new JFrame();
-        // frame.setBackground(Color.white);
-        frame.setSize(600, 600);
+        Frame f = new Frame(1000, 1000);
+        frame.setSize(f.getWidth(), f.getHeight());
         // frame.setResizable(false);
         frame.setTitle("COASTER GAME");
         frame.setVisible(true);
-        // frame.setIconImage(image.getImage());
-        // frame.setIconImage(image.getImage());
-        button = new JButton("Button");
+
+
+        button = new JButton();
+
+        ImageIcon ballon = new ImageIcon("ballon.png");
+        button.setIcon(ballon);
         button.addActionListener(this);
+        button.setOpaque(false);
+        button.setBorderPainted(false);
+        //button.setContentAreaFilled(false);
 
         panel = new JPanel();
         panel.setSize(600, 600);
         panel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 100));
         panel.setLayout(null);
 
-        ImageIcon ballon = new ImageIcon("ballon.png");
-        button.setIcon(ballon);
         panel.add(button);
-        //Button target = new Button(200, 100, 0, 600);
+        Button target = new Button(133, 100, 0, 600);
         // JButton button = new JButton(new
         // ImageIcon(getClass().getClassLoader().getResource("ballon.gif")));
 
-
-        //button.setSize(target.getHeight(), target.getWidth());
+        button.setSize(target.getWidth(), target.getHeight());
         button.setLocation(30, 30);
         frame.add(panel);
 
@@ -60,24 +70,21 @@ public class App implements ActionListener {
 
     }
 
-    public void ballon() {
-
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         count++;
         label.setText("NUMBER OF CLICKS:" + count);
+        panel.remove(button);
+        this.frame.repaint();
+        panel.add(button);
         int min = 0;
         int max = 500;
         double x = min + Math.random() * (max - min); // getting random x-axis and y-axis vaules
         double y = min + Math.random() * (max - min);
         int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
         int yValue = (int) y;
-        panel.remove(button);
-        this.frame.repaint();
-        panel.add(button);
         button.setLocation(xValue, yValue);
+        //button.move(xValue, yValue);
 
     }
 }
