@@ -9,14 +9,17 @@ import java.awt.Transparency;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.annotation.Target;
-
+import javax.swing.Timer;
 public class App implements ActionListener {
     private JFrame main;
-    private JFrame frame;
+    private JFrame gameFrame;
+    private JFrame end;
     private JButton button;
-    private JButton start;
+    private JButton startButton;
     private JPanel panel;
     private JPanel first;
+    private JPanel ending;
+    private JLabel score;
     private JLabel label;
     int count;
     Frame f = new Frame(1000, 1000);
@@ -24,24 +27,24 @@ public class App implements ActionListener {
     ImageIcon ballon = new ImageIcon("ballon.gif");
 
     public App() {
-
         main = new JFrame();
         main.setVisible(true);
         main.setSize(f.getWidth(), f.getHeight());
         first = new JPanel();
 
-        start = new JButton("PRESS TO START");
-        start.setSize(target.getWidth(), target.getHeight());
+        startButton = new JButton("PRESS TO START");
+        startButton.setSize(target.getWidth(), target.getHeight());
         main.add(first);
-        first.add(start);
+        first.add(startButton);
 
-        start.addActionListener(this);
+        startButton.addActionListener(this);
+
     }
 
     public static void main(String[] args) {
         new App();
-
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -50,7 +53,7 @@ public class App implements ActionListener {
             count++;
             label.setText("NUMBER OF CLICKS:" + count);
             panel.remove(button);
-            this.frame.repaint();
+            this.gameFrame.repaint();
             panel.add(button);
             int min = 0;
             int max = 500;
@@ -61,21 +64,20 @@ public class App implements ActionListener {
             button.setLocation(xValue, yValue);
         }
 
-        else if (o == start) {
-            frame = new JFrame();
+        else if (o == startButton) {
+            gameFrame = new JFrame();
             button = new JButton(ballon);// Makes a new button and makes the button into the "ballon" gif
             panel = new JPanel();
             label = new JLabel("NUMBER OF CLICKS: 0");
-            frame.setVisible(true);
-            frame.setSize(f.getWidth(), f.getHeight());
-            frame.setTitle("BALLON POPPING");
-            frame.setVisible(true);
+            gameFrame.setVisible(true);
+            gameFrame.setSize(f.getWidth(), f.getHeight());
+            gameFrame.setTitle("BALLON POPPING");
+            gameFrame.setVisible(true);
 
             button.addActionListener(this);
             button.setOpaque(false);
             button.setBorderPainted(false);
             button.setContentAreaFilled(false);
-
             panel.setSize(600, 600);
             panel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 100));
             panel.setLayout(null);
@@ -83,8 +85,7 @@ public class App implements ActionListener {
 
             button.setSize(target.getWidth(), target.getHeight());
             button.setLocation(30, 30);
-            frame.add(panel);
-
+ 
             label.setSize(230, 70);
             panel.add(label);
 
@@ -92,5 +93,6 @@ public class App implements ActionListener {
 
             main.dispose();
         }
+        
     }
 }
