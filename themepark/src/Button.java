@@ -1,4 +1,6 @@
-public class Button {
+import javax.swing.JButton;
+
+public class Button{
     private int height;
     private int width;
 

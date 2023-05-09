@@ -1,7 +1,5 @@
-
 import javax.swing.*;
 import java.awt.event.*;
-
 
 public class App implements ActionListener {
     private JFrame mainFrame;
@@ -12,16 +10,14 @@ public class App implements ActionListener {
     private JPanel panel;
     private JPanel startPanel;
     private JLabel scoreLabel;
-    private JLabel label;
     private JLabel finalLabel;
-    private JLabel time;
     private int count;
     private Timer timer;
     private int timeLeft = 60;
     private Frame f = new Frame(1280, 1024);
     private TargetButton target = new TargetButton(189, 100, 0, 600);
     private ImageIcon balloonIcon = new ImageIcon("balloon.gif");
-    //private ImageIcon background = new ImageIcon("background.jpg");
+    // private ImageIcon background = new ImageIcon("background.jpg");
 
     public App() {
         mainFrame = new JFrame();
@@ -46,21 +42,14 @@ public class App implements ActionListener {
         Object source = e.getSource();
 
         if (source == button) {
-            // try {
-            //     AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("BallonPop.wav"));
-            //     Clip clip = AudioSystem.getClip();
-            //     clip.open(audioInputStream);
-            //     clip.start();
-            // } catch (Exception ex) {
-            //     System.out.println("Error playing sound.");
-            // }
             count++;
             scoreLabel.setText("NUMBER OF CLICKS: " + count);
 
             panel.remove(button);
             panel.add(button);
 
-            double x = target.getMin() + Math.random() * (target.getMax() - target.getMin()); // getting random x-axis and y-axis values
+            double x = target.getMin() + Math.random() * (target.getMax() - target.getMin()); // getting random x-axis
+                                                                                              // and y-axis values
             double y = target.getMin() + Math.random() * (target.getMax() - target.getMin());
             int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
             int yValue = (int) y;
