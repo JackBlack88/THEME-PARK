@@ -1,5 +1,7 @@
+
 import javax.swing.*;
 import java.awt.event.*;
+
 
 public class App implements ActionListener {
     private JFrame mainFrame;
@@ -17,9 +19,9 @@ public class App implements ActionListener {
     private Timer timer;
     private int timeLeft = 60;
     private Frame f = new Frame(1280, 1024);
-    private Button target = new Button(189, 100, 0, 600);
+    private TargetButton target = new TargetButton(189, 100, 0, 600);
     private ImageIcon balloonIcon = new ImageIcon("balloon.gif");
-    private ImageIcon background = new ImageIcon("background.jpg");
+    //private ImageIcon background = new ImageIcon("background.jpg");
 
     public App() {
         mainFrame = new JFrame();
@@ -44,6 +46,14 @@ public class App implements ActionListener {
         Object source = e.getSource();
 
         if (source == button) {
+            // try {
+            //     AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("BallonPop.wav"));
+            //     Clip clip = AudioSystem.getClip();
+            //     clip.open(audioInputStream);
+            //     clip.start();
+            // } catch (Exception ex) {
+            //     System.out.println("Error playing sound.");
+            // }
             count++;
             scoreLabel.setText("NUMBER OF CLICKS: " + count);
 
@@ -55,7 +65,6 @@ public class App implements ActionListener {
             int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
             int yValue = (int) y;
             button.setLocation(xValue, yValue);
-
             gameFrame.repaint();
         } else if (source == startButton) {
             gameFrame = new JFrame();
@@ -95,7 +104,6 @@ public class App implements ActionListener {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    // TODO Auto-generated method stub
                     timeLeft--;
                     if (timeLeft == 0) {
                         gameFrame.dispose();

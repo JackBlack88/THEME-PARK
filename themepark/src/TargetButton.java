@@ -1,42 +1,21 @@
-public class Button {
+import java.awt.Button;
+
+public class TargetButton extends Button { //inheritance from the button class
    private double min;
    private double max;
-   private int height;
-   private int width;
 
-   public Button(int height, int width, double min, double max) {
-      setWidth(width);
-      setHeight(height);
+   public TargetButton(int height, int width, double min, double max) {
       setMax(max);
       setMin(min);
-
    }
 
    // encaptlation
-   public void setWidth(int width) {
-      this.width = width;
-   }
-
-   public void setHeight(int height) {
-      this.height = height;
-   }
-
    public void setMin(double min) {
       this.min = min;
    }
 
    public void setMax(double max) {
       this.max = max;
-   }
-
-   public int getHeight() {
-
-      return height;
-   }
-
-   public int getWidth() {
-
-      return width;
    }
 
    public double getMin() {
