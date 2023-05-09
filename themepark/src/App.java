@@ -11,13 +11,15 @@ public class App implements ActionListener {
     private JPanel startPanel;
     private JLabel scoreLabel;
     private JLabel label;
+    private JLabel finalLabel;
     private JLabel time;
     private int count;
     private Timer timer;
     private int timeLeft = 60;
-    private Frame f = new Frame(1000, 1000);
+    private Frame f = new Frame(1280, 1024);
     private Button target = new Button(189, 100, 0, 600);
     private ImageIcon balloonIcon = new ImageIcon("balloon.gif");
+    private ImageIcon background = new ImageIcon("background.jpg");
 
     public App() {
         mainFrame = new JFrame();
@@ -48,10 +50,8 @@ public class App implements ActionListener {
             panel.remove(button);
             panel.add(button);
 
-            int min = 0;
-            int max = 500;
-            double x = min + Math.random() * (max - min); // getting random x-axis and y-axis values
-            double y = min + Math.random() * (max - min);
+            double x = target.getMin() + Math.random() * (target.getMax() - target.getMin()); // getting random x-axis and y-axis values
+            double y = target.getMin() + Math.random() * (target.getMax() - target.getMin());
             int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
             int yValue = (int) y;
             button.setLocation(xValue, yValue);
@@ -75,14 +75,19 @@ public class App implements ActionListener {
             scoreLabel.setSize(230, 70);
             scoreLabel.setLocation(300, 0);
 
+            // label = new Label(background);
+
+            // time.setSize(230, 70);
+            // time.setLocation(500, 0);
+            // time.setText("TIME LEFT: " + timeLeft);
+
             panel = new JPanel();
             panel.setSize(600, 600);
             panel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 100));
             panel.setLayout(null);
             panel.add(button);
             panel.add(scoreLabel);
-            panel.add(time);
-            time.setLocation(500, 21);
+            // panel.add(time);
             gameFrame.add(panel);
             mainFrame.dispose();
 
@@ -98,11 +103,13 @@ public class App implements ActionListener {
                         endFrame = new JFrame();
                         endFrame.setSize(f.getWidth(), f.getHeight());
                         endFrame.setVisible(true);
-                        endFrame.add(scoreLabel);
-                        scoreLabel.setText("YOUR FINAL SCORE IS: " + count);
+                        endFrame.add(finalLabel);
+                        scoreLabel.setSize(230, 70);
+                        scoreLabel.setLocation(300, 0);
+                        finalLabel.setText("YOUR FINAL SCORE IS: " + count);
 
                     } else {
-                        time.setText("TIME LEFT: " + timeLeft);
+                        scoreLabel.setText("TIME LEFT: " + timeLeft);
                     }
                 }
 
