@@ -1,17 +1,14 @@
-public class TargetButton extends Button { // inheritance from the button class
+public class TargetButton extends Button { // Inheritance from the button class
    private double min;
    private double max;
-
 
    public TargetButton(int height, int width, double min, double max) {
       super(height, width);
       setMax(max);
       setMin(min);
-
-
    }
 
-   // encaptlation
+   // Encaptlation
    public void setMin(double min) {
       this.min = min;
    }
