@@ -48,8 +48,7 @@ public class App implements ActionListener {
             panel.remove(button);
             panel.add(button);
 
-            double x = target.getMin() + Math.random() * (target.getMax() - target.getMin()); // getting random x-axis
-                                                                                              // and y-axis values
+            double x = target.getMin() + Math.random() * (target.getMax() - target.getMin()); // getting random x-axis and y-axis values
             double y = target.getMin() + Math.random() * (target.getMax() - target.getMin());
             int xValue = (int) x; // Converting the x and y nums from doubles to ints so I can set the location
             int yValue = (int) y;
